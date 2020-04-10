@@ -15,4 +15,10 @@ after_success:
   - docker build -t debasishk/multi-server ./server
   - docker build -t debasishk/multi-worker ./worker
 
+#Docker Hub docker cli Login 
+echo "$DOCKER_KEY" | docker login -u "$DOCKER_ID" --password-stdin
 # Take those images and push them to docker hub
+docker push debasishk/multi-client
+docker push debasishk/multi-nginx
+docker push debasishk/multi-server
+docker push debasishk/multi-worker
