@@ -11,7 +11,7 @@ script:
 
 after_success:
   - docker build -t debasishk/multi-client ./client
-  - docker build -t debasishk/multi-nginx ./ngnex
+  - docker build -t debasishk/multi-nginx ./nginx
   - docker build -t debasishk/multi-server ./server
   - docker build -t debasishk/multi-worker ./worker
 
