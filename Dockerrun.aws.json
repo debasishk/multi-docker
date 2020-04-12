@@ -1,0 +1,36 @@
+{
+ "AWSEBDockerrunVersion": 2,
+ "ContainerDefinitions": [
+   {
+     "name": "client",
+     "image": "debasishk/multi-client",
+     "hostname": "client",
+     "essential": false
+   },
+   {
+     "name": "server",
+     "image": "debasishk/multi-server",
+     "hostname": "api",
+     "essential": false
+   },
+   {
+     "name": "worker",
+     "image": "debasishk/multi-worker",
+     "hostname": "worker",
+     "essential": false
+   },
+   {
+     "name": "nginx",
+     "image": "debasishk/multi-nginx",
+     "hostname": "nginx",
+     "essential": true,
+     "portMappings": [
+       {
+         "hostPort": 80,
+	 "containerPort": 80
+       }
+     ],
+     "Links": ["client", "server"]
+   }
+ ]
+}

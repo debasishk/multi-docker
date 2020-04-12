@@ -22,3 +22,22 @@ after_success:
   - docker push debasishk/multi-nginx
   - docker push debasishk/multi-server
   - docker push debasishk/multi-worker
+
+# Let EBS know goahead and pull images from Dockerhub to deploy. 
+# access_key_id: $AWS_ACCESS_KEY
+# secret_access_key: $AWS_SECRET_KEY
+
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: us-west-1
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-us-west-1-187968103495
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
+     
